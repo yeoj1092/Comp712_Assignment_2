@@ -85,9 +85,15 @@ $conn = @mysqli_connect(
      * This function assigns the driver by updating the database and returning results
      */
     function assignDriver($conn, $sql_table, $referenceNumber) {
+        // Validate reference number format
+        if (!preg_match('/^[A-Z]{3}\d{3}$/', $referenceNumber)) {
+            echo("Invalid reference number format.");
+            return;
+        }
+    
         $assign_Query = "UPDATE $sql_table SET status = 'assigned' WHERE bookingRefNo = '$referenceNumber'";
         $assign_Result = mysqli_query($conn, $assign_Query);
-
+    
         if ($assign_Result === true) {
             //if results is assigned
             echo("Booking $referenceNumber assigned.");
@@ -96,5 +102,3 @@ $conn = @mysqli_connect(
             echo("Booking for $referenceNumber FAILED.");
         }
     }
-
-?>
