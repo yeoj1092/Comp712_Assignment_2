@@ -1,0 +1,33 @@
+
+used to create the database table
+
+CREATE TABLE booking(
+    bookingRefNo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    customerName TEXT NOT NULL,
+    phoneNumber INT(12) NOT NULL,
+    unitNumber TEXT,
+    streetNumber TEXT NOT NULL,
+    streetName TEXT NOT NULL,
+    suburb TEXT,
+    destinationSuburb TEXT,
+    pickUpDate DATE NOT NULL,
+    pickUpTime TIME NOT NULL,
+    status ENUM('assigned','unassigned') NOT NULL
+);
+
+testing with outside database
+CREATE TABLE booking
+(
+      ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+      bookingRefNo AS 'BRN' + RIGHT('00000' + CAST(ID AS VARCHAR(5)), 5) PERSISTED,
+    customerName TEXT NOT NULL,
+    phoneNumber INT(12) NOT NULL,
+    unitNumber TEXT,
+    streetNumber TEXT NOT NULL,
+    streetName TEXT NOT NULL,
+    suburb TEXT,
+    destinationSuburb TEXT,
+    pickUpDate DATE NOT NULL,
+    pickUpTime TIME NOT NULL,
+    status ENUM('assigned','unassigned') NOT NULL
+);

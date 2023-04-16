@@ -1,0 +1,151 @@
+<!--
+ * Author: Jameson Yeo
+ * Student ID: 20104906
+ * booking page:
+-->
+
+<!DOCTYPE html>
+<html XMLns="http://www.w3.org/1999/xHTML">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="booking.js"></script>
+    <title>Booking Page</title>
+  </head>
+
+  <body onload="onloadsettings();">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">CabsOnline</a>
+    </nav>
+    <div class="container">
+      <h1>Online Booking</h1>
+      <form action="javascript:requestBooking()">
+        <div class="form-group">
+          <!--Customer Name-->
+          <label for="name"><b>Name:</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="cname"
+            name="cname"
+            pattern="[A-Za-z ]{1,42}"
+            required
+          />
+          <!--Phone Number-->
+          <label for="phone"><b>Phone:</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            name="phone"
+            pattern="\d+"
+            minlength="10"
+            maxlength="12"
+            required
+          />
+          <!--Unit number-->
+          <!--optional-->
+          <label for="unumber"><b>Unit Number:</b></label>
+          <input
+            type="text"
+            placeholder="Optional"
+            class="form-control"
+            id="unumber"
+            name="unumber"
+            pattern="[1-9A-Za-z ]{1,10}"
+          />
+          <!--Street Number-->
+          <label for="snumber"><b>Street Number:</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="snumber"
+            name="snumber"
+            pattern="[1-9A-Za-z ]{1,15}"
+            required
+          />
+          <!--Street Name-->
+          <label for="stname"><b>Street Name:</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="stname"
+            name="stname"
+            pattern="[A-Za-z ]+"
+            required
+          />
+          <div class="row">
+            <div class="col">
+              <!--Suburb-->
+              <!--optional-->
+              <label for="sbname"><b>Suburb:</b></label>
+              <input
+                type="text"
+                placeholder="Optional"
+                class="form-control"
+                id="sbname"
+                name="sbname"
+                pattern="[A-Za-z ]+"
+              />
+            </div>
+            <div class="col">
+              <!--Destination Suburb-->
+              <!--optional-->
+              <label for="dsbname"><b>Destination Suburb:</b></label>
+              <input
+                type="text"
+                placeholder="Optional"
+                class="form-control"
+                id="dsbname"
+                name="dsbname"
+                pattern="[A-Za-z ]+"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <!--Pick Up Date-->
+              <label for="date"><b>Pick-Up Date:</b></label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                required
+              />
+            </div>
+            <div class="col">
+              <!--Pick Up Time-->
+              <label for="time"><b>Pick-Up Time:</b></label>
+              <input
+                type="time"
+                class="form-control"
+                id="time"
+                name="time"
+                required
+              />
+            </div>
+          </div>
+          <br />
+          <input type="submit" name="submit" class="btn btn-primary mt-2" />
+        </div>
+      </form>
+      <br />
+      <div class="column is-half" id="targetDiv">
+        <p>The confirmation information will be displayed here</p>
+        <p name="reference"></p>
+      </div>
+    </div>
+  </body>
+</html>
